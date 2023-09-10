@@ -19,7 +19,10 @@ class OffsetProp<T extends OffsetF> extends CoordProp<T> {
   @override
   String get name => _name;
   static final _name = 'position';
-  OffsetProp(super.parent) : super(value: OffsetF.zero);
+  OffsetProp(
+    super.parent, {
+    super.value = OffsetF.zero,
+  });
 }
 
 class SizeProp<T extends SizeF> extends CoordProp<T> {
@@ -52,6 +55,8 @@ abstract class CoordProp<T extends OffsetBaseF> extends Fr<T> {
   CoordProp(this.parent, {required OffsetBaseF value}) {
     _value = value;
   }
+
+  /*
   init() {
     ctrl.listen((coord) {
       if (coord.idEvent == parent.id) {
@@ -59,6 +64,7 @@ abstract class CoordProp<T extends OffsetBaseF> extends Fr<T> {
       }
     });
   }
+  */
 
   String get name => 'coord';
 
@@ -66,7 +72,9 @@ abstract class CoordProp<T extends OffsetBaseF> extends Fr<T> {
   //late final positions = db.select(DB.main.positions).watch();
   move(OffsetBaseF offset) {
     value = offset;
-
+    if (offset case OffsetF offset) {
+      if (offset.x == 0 && offset.y == 0) return;
+    }
     _timed.hold(() {
       if (parent.dontStore) return;
       stored = offset.store(parent);

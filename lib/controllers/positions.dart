@@ -12,7 +12,4 @@ class PositionsCtrl<T extends PositionFractal> extends EventsCtrl<T> {
       Attr('y', double),
     ],
   });
-
-  @override
-  get fractalType => T;
 }

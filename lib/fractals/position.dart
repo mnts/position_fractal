@@ -26,7 +26,6 @@ class PositionFractal extends EventFractal {
     super.content,
     super.file,
     super.sig,
-    super.name,
     super.to,
   });
 
