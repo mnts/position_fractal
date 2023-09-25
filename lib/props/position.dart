@@ -75,6 +75,7 @@ abstract class CoordProp<T extends OffsetBaseF> extends Fr<T> {
     if (offset case OffsetF offset) {
       if (offset.x == 0 && offset.y == 0) return;
     }
+    parent.move();
     _timed.hold(() {
       if (parent.dontStore) return;
       stored = offset.store(parent);
