@@ -21,10 +21,6 @@ class PositionFractal extends EventFractal {
     super.pubkey,
     super.createdAt,
     super.syncAt,
-    super.expiresAt,
-    super.kind,
-    super.content,
-    super.file,
     super.sig,
     super.to,
   });
