@@ -7,13 +7,8 @@ class SizesCtrl<T extends SizeFractal> extends EventsCtrl<T> {
     super.name = 'size',
     required super.extend,
     required super.make,
-  }) {}
-
-  @override
-  get attributes => const <Attr>[
-        Attr('w', double),
-        Attr('h', double),
-      ];
+    required super.attributes,
+  });
 
   @override
   get fractalType => T;

@@ -7,9 +7,6 @@ class PositionsCtrl<T extends PositionFractal> extends EventsCtrl<T> {
     super.name = 'position',
     required super.make,
     required super.extend,
-    super.attributes = const <Attr>[
-      Attr('x', double),
-      Attr('y', double),
-    ],
+    required super.attributes,
   });
 }

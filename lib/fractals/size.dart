@@ -10,6 +10,16 @@ class SizeFractal extends EventFractal {
       MP() => SizeFractal.fromMap(d),
       Object() || null => throw ('wrong event type')
     },
+    attributes: <Attr>[
+      Attr(
+        name: 'w',
+        format: 'DOUBLE',
+      ),
+      Attr(
+        name: 'h',
+        format: 'DOUBLE',
+      ),
+    ],
   );
 
   @override

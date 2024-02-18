@@ -5,11 +5,22 @@ import 'offset.dart';
 
 class PositionFractal extends EventFractal {
   static final controller = PositionsCtrl(
-      extend: EventFractal.controller,
-      make: (d) => switch (d) {
-            MP() => PositionFractal.fromMap(d),
-            Object() || null => throw ('wrong event type')
-          });
+    extend: EventFractal.controller,
+    make: (d) => switch (d) {
+      MP() => PositionFractal.fromMap(d),
+      Object() || null => throw ('wrong event type')
+    },
+    attributes: <Attr>[
+      Attr(
+        name: 'x',
+        format: 'DOUBLE',
+      ),
+      Attr(
+        name: 'y',
+        format: 'DOUBLE',
+      ),
+    ],
+  );
   @override
   PositionsCtrl get ctrl => controller;
   final OffsetF value;
