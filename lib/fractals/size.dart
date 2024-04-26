@@ -14,10 +14,12 @@ class SizeFractal extends EventFractal {
       Attr(
         name: 'w',
         format: 'DOUBLE',
+        isImmutable: true,
       ),
       Attr(
         name: 'h',
         format: 'DOUBLE',
+        isImmutable: true,
       ),
     ],
   );
@@ -37,13 +39,6 @@ class SizeFractal extends EventFractal {
     super.to,
   }) {}
 
-  @override
-  get hashData => [
-        ...super.hashData,
-        value.width.toInt(),
-        value.height.toInt(),
-      ];
-
   SizeFractal.fromMap(MP d)
       : value = SizeF(
           d['w'] + .0,
@@ -52,8 +47,8 @@ class SizeFractal extends EventFractal {
         super.fromMap(d);
 
   MP get _map => {
-        'w': value.width,
-        'h': value.height,
+        'w': value.width.toInt(),
+        'h': value.height.toInt(),
       };
 
   @override

@@ -14,10 +14,12 @@ class PositionFractal extends EventFractal {
       Attr(
         name: 'x',
         format: 'DOUBLE',
+        isImmutable: true,
       ),
       Attr(
         name: 'y',
         format: 'DOUBLE',
+        isImmutable: true,
       ),
     ],
   );
@@ -35,9 +37,6 @@ class PositionFractal extends EventFractal {
     super.sig,
     super.to,
   });
-
-  @override
-  get hashData => [...super.hashData, value.x.toInt(), value.y.toInt()];
 
   @override
   synch() {
