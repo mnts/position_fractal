@@ -1,7 +1,4 @@
 import 'package:frac/frac.dart';
-import 'package:fractal/lib.dart';
-import 'package:fractal/types/file.dart';
-import 'package:fractal_base/extensions/fractal.dart';
 import 'package:signed_fractal/controllers/events.dart';
 import 'package:signed_fractal/models/event.dart';
 import '../fractals/index.dart';
@@ -42,6 +39,7 @@ abstract class CoordProp<T extends OffsetBaseF> extends Fr<T> {
   late dynamic _value;
   @override
   T get value => _value;
+
   @override
   set value(v) {
     _value = v;

@@ -38,11 +38,6 @@ class PositionFractal extends EventFractal {
     super.to,
   });
 
-  @override
-  synch() {
-    super.synch();
-  }
-
   PositionFractal.fromMap(MP d)
       : value = OffsetF(
           d['x'] + .0,
