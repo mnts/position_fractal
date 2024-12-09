@@ -13,12 +13,12 @@ class PositionFractal extends EventFractal {
     attributes: <Attr>[
       Attr(
         name: 'x',
-        format: 'DOUBLE',
+        format: 'INTEGER',
         isImmutable: true,
       ),
       Attr(
         name: 'y',
-        format: 'DOUBLE',
+        format: 'INTEGER',
         isImmutable: true,
       ),
     ],
@@ -26,6 +26,9 @@ class PositionFractal extends EventFractal {
   @override
   PositionsCtrl get ctrl => controller;
   final OffsetF value;
+
+  @override
+  bool get deleteOlder => true;
 
   PositionFractal({
     super.id,
@@ -45,14 +48,10 @@ class PositionFractal extends EventFractal {
         ),
         super.fromMap(d);
 
-  MP get _map => {
-        'x': value.x,
-        'y': value.y,
-      };
-
   @override
-  MP toMap() => {
-        ...super.toMap(),
-        ..._map,
+  Object? operator [](String key) => switch (key) {
+        'x' => value.x.toInt(),
+        'y' => value.y.toInt(),
+        _ => super[key],
       };
 }

@@ -4,9 +4,6 @@ import 'package:signed_fractal/models/event.dart';
 import '../fractals/index.dart';
 
 class OffsetProp<T extends OffsetF> extends CoordProp<T> {
-  @override
-  get ctrl => PositionFractal.controller;
-
   double get x => value.x;
   double get y => value.y;
 
@@ -23,9 +20,6 @@ class OffsetProp<T extends OffsetF> extends CoordProp<T> {
 }
 
 class SizeProp<T extends SizeF> extends CoordProp<T> {
-  @override
-  get ctrl => SizeFractal.controller;
-
   double get width => value.width;
   double get height => value.height;
 
@@ -45,8 +39,6 @@ abstract class CoordProp<T extends OffsetBaseF> extends Fr<T> {
     _value = v;
     parent.notifyListeners();
   }
-
-  EventsCtrl get ctrl;
 
   EventFractal parent;
   late EventFractal stored;

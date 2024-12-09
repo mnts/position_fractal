@@ -13,12 +13,12 @@ class SizeFractal extends EventFractal {
     attributes: <Attr>[
       Attr(
         name: 'w',
-        format: 'DOUBLE',
+        format: 'INTEGER',
         isImmutable: true,
       ),
       Attr(
         name: 'h',
-        format: 'DOUBLE',
+        format: 'INTEGER',
         isImmutable: true,
       ),
     ],
@@ -27,6 +27,9 @@ class SizeFractal extends EventFractal {
   @override
   SizesCtrl get ctrl => controller;
   final SizeF value;
+
+  @override
+  bool get deleteOlder => true;
 
   SizeFractal({
     super.id,
@@ -37,7 +40,7 @@ class SizeFractal extends EventFractal {
     super.syncAt,
     super.sig,
     super.to,
-  }) {}
+  });
 
   SizeFractal.fromMap(MP d)
       : value = SizeF(
@@ -52,8 +55,9 @@ class SizeFractal extends EventFractal {
       };
 
   @override
-  MP toMap() => {
-        ...super.toMap(),
-        ..._map,
+  Object? operator [](String key) => switch (key) {
+        'w' => value.width.toInt(),
+        'h' => value.height.toInt(),
+        _ => super[key],
       };
 }
