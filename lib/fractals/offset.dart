@@ -15,7 +15,7 @@ class OffsetBaseF {
 
   static final zero = OffsetBaseF(0, 0);
 
-  EventFractal store(EventFractal fractal) {
+  Future<EventFractal> store(EventFractal fractal) async {
     return EventFractal();
   }
 
@@ -104,11 +104,13 @@ class OffsetF extends OffsetBaseF {
   double get distance => sqrt(dx * dx + dy * dy);
 
   @override
-  PositionFractal store(fractal) {
-    return PositionFractal(
+  Future<PositionFractal> store(fractal) async {
+    final f = PositionFractal(
       value: this,
       to: fractal,
-    )..synch();
+    );
+    await f.synch();
+    return f;
   }
 
   /// The x component of the offset.
@@ -206,11 +208,13 @@ class SizeF extends OffsetBaseF {
   const SizeF(super.width, super.height);
 
   @override
-  SizeFractal store(fractal) {
-    return SizeFractal(
+  Future<SizeFractal> store(fractal) async {
+    final f = SizeFractal(
       value: this,
       to: fractal,
-    )..synch();
+    );
+    await f.synch();
+    return f;
   }
 
   @override

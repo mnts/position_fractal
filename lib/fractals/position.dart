@@ -13,12 +13,12 @@ class PositionFractal extends EventFractal {
     attributes: <Attr>[
       Attr(
         name: 'x',
-        format: 'INTEGER',
+        format: FormatF.integer,
         isImmutable: true,
       ),
       Attr(
         name: 'y',
-        format: 'INTEGER',
+        format: FormatF.integer,
         isImmutable: true,
       ),
     ],
@@ -43,8 +43,8 @@ class PositionFractal extends EventFractal {
 
   PositionFractal.fromMap(MP d)
       : value = OffsetF(
-          d['x'] + .0,
-          d['y'] + .0,
+          (d['x'] ?? 0) + .0,
+          (d['y'] ?? 0) + .0,
         ),
         super.fromMap(d);
 

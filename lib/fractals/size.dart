@@ -13,12 +13,12 @@ class SizeFractal extends EventFractal {
     attributes: <Attr>[
       Attr(
         name: 'w',
-        format: 'INTEGER',
+        format: FormatF.integer,
         isImmutable: true,
       ),
       Attr(
         name: 'h',
-        format: 'INTEGER',
+        format: FormatF.integer,
         isImmutable: true,
       ),
     ],
@@ -44,8 +44,8 @@ class SizeFractal extends EventFractal {
 
   SizeFractal.fromMap(MP d)
       : value = SizeF(
-          d['w'] + .0,
-          d['h'] + .0,
+          (d['w'] ?? 0) + .0,
+          (d['h'] ?? 0) + .0,
         ),
         super.fromMap(d);
 
